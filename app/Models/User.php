@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function phones()
+    {
+        return $this->hasMany('App\Models\Phone');
+    }
+
+    public function properties()
+    {
+        return $this->belongsToMany('App\Models\Property','owners')->withPivot(['main_owner']);
+    }
 }

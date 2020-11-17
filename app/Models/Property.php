@@ -13,4 +13,9 @@ class Property extends Model
         'house_name_number',
         'postcode'
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User','owners')->withPivot(['main_owner']);
+    }
 }
